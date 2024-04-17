@@ -30,9 +30,19 @@ async function travel(place) {
 
 app.get("/travel", async (req, res) => {
   const { place } = req.query;
+  if (!place) {
+    return res.status(400).json({ error: "Missing 'place' parameter" });
+  }
   const text = await travel(place);
-  const data = JSON.parse(text);
-  res.json(data);
+  try {
+    const data = JSON.parse(text);
+    res.json(data);
+  } catch (error) {
+    console.error("Error parsing JSON:", error);
+    res.status(400).json({
+      error: "Invalid location. Please enter a valid place.",
+    });
+  }
 });
 
 app.listen(port, () => {
