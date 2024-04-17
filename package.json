@@ -1,0 +1,14 @@
+{
+  "name": "checkmate-generator",
+  "version": "1.0.0",
+  "description": "CheckMate 서비스의 체크리스트 생성기입니다.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
