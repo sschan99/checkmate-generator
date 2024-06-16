@@ -1,0 +1,50 @@
+/* Basic Styling */
+body {
+  font-family: sans-serif;
+  margin: 2em; /* Add some margin around the content */
+  background-color: #f0f0f0; /* Light gray background for the entire page */
+}
+
+h1 {
+  text-align: center;
+  color: #333; /* Dark gray color for the heading */
+}
+
+/* Input and Button */
+#placeInput {
+  padding: 0.5em;
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 4px;
+  width: 200px;
+}
+
+#getChecklistBtn {
+  padding: 0.5em 1em;
+  background-color: #4caf50; /* Green background */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Checklist */
+#checklist {
+  margin-top: 1em;
+  background-color: white; /* White background for the checklist container */
+  padding: 1em;
+  border-radius: 8px; /* Rounded corners for the checklist container */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+}
+
+#checklist h3 {
+  color: #444; /* Darker gray for category headings */
+}
+
+#checklist ul {
+  list-style: none;
+  padding: 0;
+}
+
+#checklist li {
+  margin: 0.5em 0;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Travel Checklist</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>여행 체크리스트</h1>
+    <input type="text" id="placeInput" placeholder="장소를 입력하세요" />
+    <button id="getChecklistBtn">체크리스트 가져오기</button>
+
+    <div id="checklist"></div>
+
+    <script>
+      const placeInput = document.getElementById("placeInput");
+      const getChecklistBtn = document.getElementById("getChecklistBtn");
+      const checklistDiv = document.getElementById("checklist");
+
+      function createChecklistHTML(jsonData) {
+        let html = "";
+
+        // Iterate over categories
+        for (const category in jsonData) {
+          html += `<h3>${category}</h3>`; // Category heading
+          html += "<ul>"; // Start unordered list
+
+          // Iterate over items in each category
+          jsonData[category].forEach((item) => {
+            html += `<li><input type="checkbox"> ${item}</li>`; // Checklist item with checkbox
+          });
+
+          html += "</ul>"; // End unordered list
+        }
+
+        return html;
+      }
+
+      getChecklistBtn.addEventListener("click", async () => {
+        const place = placeInput.value;
+        const url = `/travel?place=${place}`;
+
+        try {
+          const response = await fetch(url);
+          const data = await response.json();
+
+          const checklistHtml = createChecklistHTML(data);
+          checklistDiv.innerHTML = checklistHtml;
+        } catch (error) {
+          console.error("Error fetching data:", error);
+          checklistDiv.innerHTML =
+            "<p>Error getting checklist. Please try again.</p>";
+        }
+      });
+    </script>
+  </body>
+</html>
